@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form, redirect } from "react-router-dom";
 
 import Input from "../../shared/components/FormElements/Input";
 import Card from "../../shared/components/UIElements/Card";
@@ -52,16 +53,11 @@ const Auth = () => {
     setIsLoginMode((prevMode) => !prevMode);
   };
 
-  const authSubmitHandler = (event) => {
-    event.preventDefault();
-    console.log(formState.inputs);
-  };
-
   return (
     <Card className="authentication">
       <h2>Login Required</h2>
       <hr />
-      <form onSubmit={authSubmitHandler}>
+      <Form method="post">
         {!isLoginMode && (
           <Input
             element="input"
@@ -94,7 +90,7 @@ const Auth = () => {
         <Button type="submit" disabled={!formState.isValid}>
           {isLoginMode ? "LOGIN" : "SIGNUP"}
         </Button>
-      </form>
+      </Form>
       <Button inverse onClick={switchModeHandler}>
         SWITCH TO {isLoginMode ? "SIGNUP" : "LOGIN"}
       </Button>
@@ -103,3 +99,19 @@ const Auth = () => {
 };
 
 export default Auth;
+
+export const action = () => {
+  // **********fake token login**********
+  const token = "thisisafaketokenwhichisusedtotestifthisworks";
+
+  // store the token in local storage
+  localStorage.setItem("token", token);
+  console.log(localStorage.getItem("token"));
+
+  // store the expiration time
+  //   const expiration = new Date();
+  //   expiration.setHours(expiration.getHours() + 1);
+  //   localStorage.setItem("expiration", expiration.toISOString());
+
+  return redirect("/");
+};

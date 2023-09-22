@@ -5,7 +5,7 @@ import { CSSTransition } from "react-transition-group";
 import "./SideDrawer.css";
 
 const SideDrawer = (props) => {
-  console.log(`SideDrawer rendered: ${props.show}`);
+  //   console.log(`SideDrawer rendered: ${props.show}`);
   const content = (
     <CSSTransition
       in={props.show}
