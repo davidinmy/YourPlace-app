@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 const placesRoutes = require("./routes/places-routes");
 const usersRoutes = require("./routes/users-routes");
@@ -27,4 +28,13 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || "An unknown error occurred!" });
 }); // express error handling middleware
 
-app.listen(5001);
+mongoose
+  .connect(
+    `mongodb+srv://david:${process.env.MONGODB_KEY}@cluster0.gap2tbq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+  )
+  .then(() => {
+    app.listen(5001);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
