@@ -24,7 +24,7 @@ export const NavLinks = (props) => {
       )}
       {!token && (
         <li>
-          <NavLink to="/auth">AUTHENTICATE</NavLink>
+          <NavLink to="/auth?mode=login">AUTHENTICATE</NavLink>
         </li>
       )}
       {token && (

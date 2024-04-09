@@ -6,6 +6,7 @@ import UserPlaces from "./places/pages/UserPlaces";
 import RootLayout from "./shared/components/Navigation/Root";
 import UpdatePlace from "./places/pages/UpdatePlace";
 import Auth, { action as authAction } from "./users/pages/Auth";
+// import Auth from "./users/pages/Auth";
 import { action as logoutAction } from "./shared/util/logout";
 
 import { checkAuthLoader, tokenLoader } from "./shared/util/auth";
